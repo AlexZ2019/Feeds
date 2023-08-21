@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.mb {
+  margin-bottom: 25px;
+}
+
+.page {
+  padding-bottom: 50px;
+}
+
+.page > .items {
+  min-height: 70vh;
+}
+
+.page > .alert {
+  margin: auto;
+}
+
+.inlineEl {
+  display: inline-block;
+}

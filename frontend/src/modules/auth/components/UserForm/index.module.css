@@ -1,0 +1,25 @@
+.loginButton, .form button:focus, .form button:hover, .form button {
+  background-color: #bcfabe;
+  color: #282c34;
+}
+
+.form {
+  width: 300px;
+  margin: auto;
+  padding: 25px;
+  background: #FFF;
+  border-radius: 10px;
+}
+.form button {
+  border: none;
+}
+.input {
+  margin: 15px 0;
+}
+
+.errorMessage {
+  height: 15px;
+  color: darkred;
+}
+
+/*# sourceMappingURL=index.module.css.map */
