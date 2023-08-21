@@ -1,0 +1,10 @@
+@media (max-width: 776px) {
+  .cardMeta {
+    display: grid;
+  }
+}
+.cardMeta .feedImg:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.module.css.map */

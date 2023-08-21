@@ -1,0 +1,10 @@
+.cardMeta {
+  @media (max-width: 776px) {
+    display: grid;
+  }
+  .feedImg {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
