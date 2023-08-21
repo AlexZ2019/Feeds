@@ -1,0 +1,13 @@
+.header {
+  height: 50px;
+  padding: 15px;
+  background-color: #61dafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .email {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.module.css.map */
