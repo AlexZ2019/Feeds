@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import FeedsService from './feeds.service';
-import { Injectable, UseGuards } from '@nestjs/common';
+import { BadRequestException, Injectable, UseGuards } from '@nestjs/common';
 import AccessTokenGuard from '../auth/guards/accessToken.guard';
 import FeedsArgs from './dto/feeds.dto';
 import FeedArgs from './dto/feed.dto';
@@ -23,28 +23,44 @@ class FeedsResolver {
   @Query(() => FeedsModel)
   @UseGuards(AccessTokenGuard)
   public async getFeeds(@Args() args: FeedsArgs) {
-    return this.feedsService.getFeeds(args.page, args.pageSize, args.search);
+    try {
+      return this.feedsService.getFeeds(args.page, args.pageSize, args.search);
+    } catch (err) {
+      throw new BadRequestException('Error getting feeds');
+    }
   }
 
   @Mutation(() => Boolean)
   @UseGuards(AccessTokenGuard)
   public async addFeed(@Args() feed: FeedArgs) {
-    await this.feedsService.addFeed(feed);
-    return true;
+    try {
+      await this.feedsService.addFeed(feed);
+      return true;
+    } catch ({ message }) {
+      throw new BadRequestException(message);
+    }
   }
 
   @Mutation(() => Boolean)
   @UseGuards(AccessTokenGuard)
   async deleteFeed(@Args() args: DeleteArgs) {
-    await this.feedsService.deleteFeed(args.id);
-    return true;
+    try {
+      await this.feedsService.deleteFeed(args.id);
+      return true;
+    } catch ({ message }) {
+      throw new BadRequestException(message);
+    }
   }
 
   @Mutation(() => Boolean)
   @UseGuards(AccessTokenGuard)
   async editFeed(@Args() feed: FeedArgsWithID) {
-    await this.feedsService.editFeed(feed);
-    return true;
+    try {
+      await this.feedsService.editFeed(feed);
+      return true;
+    } catch ({ message }) {
+      throw new BadRequestException(message);
+    }
   }
 }
 
